@@ -15,8 +15,23 @@ if(isset($_POST['submit']))
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$name,$email,$mobile,$password]);
 
-    $_SESSION['register_success'] = "Data Inserted Successfully";
-
 }
 
-header("Location:../register.php");
+if ($stmt->rowCount() > 0) {
+
+    $id = $pdo->lastInsertId();
+
+    $_SESSION['successful_register'] = "Data Inserted Successfully";
+    $_SESSION['id'] = $id;
+    $_SESSION['name'] = $name;
+    $_SESSION['email'] = $email;
+    $_SESSION['mobile'] = $mobile;
+
+    header("Location:../index.php");
+
+} else {
+
+    $_SESSION['unsuccessful_register'] = "Register Error Happend";
+    header("Location:../register.php");
+
+}

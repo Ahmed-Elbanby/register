@@ -10,11 +10,11 @@
         <div class="col-sm-6 mx-auto">
             <div class="border p-5 my-3">
                 <?php if (isset($_SESSION['unsuccessful_login'])): ?>
-                    <h6 class="alert alert-danger text-center fade show" id="successMessage"> Password is Incorrect </h6>
+                    <h6 class="alert alert-danger text-center fade show" id="Message"> Password is Incorrect </h6>
                     <?php unset($_SESSION['unsuccessful_login']); ?>
                 <?php endif; ?>
                 <?php if (isset($_SESSION['unfound_login'])): ?>
-                    <h6 class="alert alert-danger text-center fade show" id="successMessage"> Email is NOT Found </h6>
+                    <h6 class="alert alert-danger text-center fade show" id="Message"> Email is NOT Found </h6>
                     <?php unset($_SESSION['unfound_login']); ?>
                 <?php endif; ?>
                 <form action="handler/login.php" method="POST">
@@ -35,10 +35,9 @@
 
 <script>
     setTimeout(function () {
-        var message = document.getElementById("successMessage");
+        var message = document.getElementById("Message");
         message.classList.remove("show");
         message.style.opacity = "0";
-        // message.remove();
         setTimeout(function () {
             message.remove();
         }, 300);
@@ -46,20 +45,10 @@
 </script>
 
 <?php if (isset($_SESSION['unsuccessful_login'])): ?>
-    <!-- <script>
-        window.onload = function () {
-            alert("Password is Incorrect");
-        };
-    </script> -->
     <?php unset($_SESSION['unsuccessful_login']); ?>
 <?php endif; ?>
 
 <?php if (isset($_SESSION['unfound_login'])): ?>
-    <!-- <script>
-        window.onload = function () {
-            alert("Inserted Email is NOT Found");
-        };
-    </script> -->
     <?php unset($_SESSION['unfound_login']); ?>
 <?php endif; ?>
 
