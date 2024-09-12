@@ -14,6 +14,10 @@
                 <h6 class="alert alert-success text-center fade show" id="Message"> You Have Registered </h6>
                 <?php unset($_SESSION['successful_register']); ?>
             <?php endif; ?>
+            <?php if (isset($_SESSION['successful_change'])): ?>
+                <h6 class="alert alert-success text-center fade show" id="Message"> Password Changed Successfully </h6>
+                <?php unset($_SESSION['successful_change']); ?>
+            <?php endif; ?>
             <h1 class="text-center display-4 border p-3 my-5 "> Login System Using PHP </h1>
         </div>
     </div>
